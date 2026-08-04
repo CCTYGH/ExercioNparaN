@@ -25,9 +25,9 @@ private long idaluno;
 @Column(name="nome", nullable = false, length = 100)
 private String nome;
 
-@Column (name = "cpf",  nullable =  false, unique = true, length = 40)
+@Column (name = "cpf",  nullable =  false, length = 40)
 private String cpf;
 
-@Column (name = "email",  nullable =  false, unique = true, length = 100)
+@Column (name = "email",  nullable =  false, length = 100)
 private String email;
 }
