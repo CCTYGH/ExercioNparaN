@@ -17,11 +17,11 @@ public class AlunoService {
         this.alunoRepository = alunoRepository;
     }
 
-    public List<Aluno> listarTodos(){
+    public List<Aluno> listarAluno(){
         return alunoRepository.findAll();
     }
 
-    public Aluno salvarAluno(Aluno aluno){
+    public Aluno salvar(Aluno aluno){
         return alunoRepository.save(aluno);
 
     }

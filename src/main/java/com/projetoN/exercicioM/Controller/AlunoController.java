@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.projetoN.exercicioM.Entity.Aluno;
 import com.projetoN.exercicioM.Service.AlunoService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,24 +24,33 @@ public class AlunoController {
         this.alunoService = alunoService;
     }
 
-    @GetMapping("/listarTodos")
-    public String listarTodos(Model  oModel) {
-        oModel.addAttribute("listAlunos", alunoService.listarTodos());
-        return "listarAluno";
+    @GetMapping("/listarAluno")
+    public String listarAluno(Model  oModel) {
+        oModel.addAttribute("listAlunos", alunoService.listarAluno());
+        return "aluno/listarAluno";
     }
     
     @GetMapping("/cadastrarAluno")
     public String cadastrarAluno( Model oModel) {
         oModel.addAttribute("aluno", new Aluno());
-        return "cadastrarAluno";
+        return "aluno/cadastrarAluno";
     }
     
 @PostMapping("/salvar")
 public String salvar(Aluno aluno, Model oModel ) {
    
-    alunoService.salvarAluno(aluno);
+    alunoService.salvar(aluno);
     return "aluno/listarAluno";
 }
+
+@GetMapping("/excluir/{id}")
+public String excluirAluno(@PathVariable Long id) {
+
+    alunoService.deletaAluno(id);
+    return "aluno/listarAluno";
+}
+
+
 
 
 }
