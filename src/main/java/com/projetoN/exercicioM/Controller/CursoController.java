@@ -22,36 +22,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/curso")
 public class CursoController {
 
-    private final CursoService CursoService;
+    private final CursoService cursoService;
 
-    public CursoController(CursoService CursoService){
-        this.CursoService = CursoService;
+    public CursoController(CursoService cursoService){
+        this.cursoService = cursoService;
     }
 
-    @GetMapping("/listarTodos")
-    public String listarTodos(Model  oModel) {
-        oModel.addAttribute("listCurso", CursoService.listarTodos());
+    @GetMapping("/listarCurso")
+    public String listarCurso(Model  oModel) {
+        oModel.addAttribute("listCurso", cursoService.listarCurso());
         return "curso/listarCurso";
     }
     
     @GetMapping("/cadastrarCurso")
     public String cadastrarCurso( Model oModel) {
         oModel.addAttribute("curso", new Curso());
-        return "curso/cadastrarCurso";
+        return "/curso/cadastrarCurso";
     }
     
 @PostMapping("/salvar")
-public String salvar(@ModelAttribute("curso") Curso curso ) {
+public String salvar(Curso curso, Model oModel ) {
    
-    CursoService.salvarCurso(curso);
-    return "curso/listarCurso";
+    cursoService.salvar(curso);
+    return "redirect:/curso/listarCurso";
 }
 
 @GetMapping("/excluir/{id}")
 public String excluirCurso(@PathVariable Long id) {
 
-    CursoService.deletarCurso(id);
-    return "curso/listarCurso";
+    cursoService.deletarCurso(id);
+    return "redirect:/curso/listarCurso";
 }
 
 

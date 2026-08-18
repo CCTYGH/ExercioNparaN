@@ -24,15 +24,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="curso : ${listCursos}">
+            <tr th:each="curso : ${listCurso}">
                 <td th:text="${curso.idcurso}"></td>
                 <td th:text="${curso.nomeCurso}"></td>
                 <td th:text="${curso.cargaHora}"></td>
                 <td th:text="${curso.descricao}"></td>
 
                 <td>
-                    <a th:href="@{/curso/editar/{id}(id=${curso.id})}">Editar</a> |
-                    <a th:href="@{/curso/excluir/{id}(id=${curso.id})}" onclick="return confirm('Tem certeza que deseja excluir este curso?');">Excluir</a>
+                    <a th:href="@{/curso/editar/{id}(id=${curso.idcurso})}">Editar</a> |
+                    <a th:href="@{/curso/excluir/{id}(id=${curso.idcurso})}" onclick="return confirm('Tem certeza que deseja excluir este curso?');">Excluir</a>
                 </td>
             </tr>
         </tbody>

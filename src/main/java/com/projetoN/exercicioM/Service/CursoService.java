@@ -17,17 +17,17 @@ public class CursoService {
         this.cursoRepository = cursoRepository;
     }
 
-    public List<Curso> listarTodos(){
+    public List<Curso> listarCurso(){
         return cursoRepository.findAll();
     }
 
-    public Curso salvarCurso(Curso curso){
+    public Curso salvar(Curso curso){
         return cursoRepository.save(curso);
 
     }
     
     public Curso buscaId(Long id) {
-        return cursoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado com o ID: " + id));
+        return cursoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Curso não encontrado com o ID: " + id));
     }
 
     

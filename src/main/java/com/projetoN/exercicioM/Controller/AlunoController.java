@@ -33,21 +33,21 @@ public class AlunoController {
     @GetMapping("/cadastrarAluno")
     public String cadastrarAluno( Model oModel) {
         oModel.addAttribute("aluno", new Aluno());
-        return "aluno/cadastrarAluno";
+        return "/aluno/cadastrarAluno";
     }
     
 @PostMapping("/salvar")
 public String salvar(Aluno aluno, Model oModel ) {
    
     alunoService.salvar(aluno);
-    return "aluno/listarAluno";
+    return "redirect:/aluno/listarAluno";
 }
 
 @GetMapping("/excluir/{id}")
 public String excluirAluno(@PathVariable Long id) {
 
     alunoService.deletaAluno(id);
-    return "aluno/listarAluno";
+    return "redirect:/aluno/listarAluno";
 }
 
 
