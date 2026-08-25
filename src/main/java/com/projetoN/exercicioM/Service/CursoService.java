@@ -2,7 +2,7 @@ package com.projetoN.exercicioM.Service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.projetoN.exercicioM.Entity.Curso;
@@ -31,7 +31,7 @@ public class CursoService {
     }
 
     
-    public Curso Alterar(Long id, Curso oCurso){
+    public Curso editar(Long id, Curso oCurso){
         Curso cursoExistente = buscaId(id);
 
         cursoExistente.setNomeCurso(oCurso.getNomeCurso());

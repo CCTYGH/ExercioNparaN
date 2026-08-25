@@ -2,7 +2,7 @@ package com.projetoN.exercicioM.Service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.projetoN.exercicioM.Entity.Aluno;
@@ -31,7 +31,7 @@ public class AlunoService {
     }
 
     
-    public Aluno Alterar(Long id, Aluno oaluno){
+    public Aluno editar(Long id, Aluno oaluno){
        Aluno alunoExistente = BuscaralunoPorId(id);
 
        alunoExistente.setNome(oaluno.getNome());

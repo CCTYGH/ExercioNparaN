@@ -8,9 +8,9 @@ import com.projetoN.exercicioM.Entity.Aluno;
 import com.projetoN.exercicioM.Service.AlunoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -50,6 +50,13 @@ public String excluirAluno(@PathVariable Long id) {
     return "redirect:/aluno/listarAluno";
 }
 
+@GetMapping("/editar/{id}")
+public String editar(@PathVariable Long id, Model  oModel) {
+
+    Aluno alunoExistente = alunoService.BuscaralunoPorId(id);
+    oModel.addAttribute("aluno", alunoExistente);
+    return "/aluno/cadastrarAluno";
+}
 
 
 
