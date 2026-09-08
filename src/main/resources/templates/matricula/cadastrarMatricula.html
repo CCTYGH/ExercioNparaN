@@ -8,25 +8,26 @@
 
     <h2>Registrar Nova Matrícula</h2>
 
-    <form th:action="@{/matriculas/salvarMatricula}" th:object="${matriculaDto}" method="POST">
+    <form th:action="@{/matricula/salvarMatricula}" th:object="${matriculaDto}" method="POST">
         
         <div>
-            <label for="alunoId">Selecione o Aluno:</label>
-            <select id="alunoID" th:field="*{alunoID}" required>
+            <label for="idaluno">Selecione o Aluno:</label>
+            <select id="idaluno" th:field="*{idaluno}" required>
                 <option value=""> Escolha um Aluno </option>
                 <!-- O th:value guarda o ID (que vai pro banco), e o th:text mostra o Nome para o usuário -->
                 <option th:each="aluno : ${listAlunos}"
                         th:value="${aluno.idaluno}"
-                        th:text="${aluno.nome} + ' (Matricula: ' + ${aluno.matricula} + ')'">
+                        th:text="${aluno.nome}">
                 </option>
             </select>
         </div>
         <br>
         
         <div>
-            <label for="cursoId">Selecione o Curso:</label>
-            <select id="cursoID" th:field="*{cursoID}" required>
+            <label for="idcurso">Selecione o Curso:</label>
+            <select id="idcurso" th:field="*{idcurso}" required>
                 <option value=""> Escolha um Curso </option>
+                
                 <option th:each="curso : ${listCurso}"
                         th:value="${curso.idcurso}"
                         th:text="${curso.nomeCurso}">
@@ -36,7 +37,7 @@
         <br>
 
         <div>
-            <label for="data_matricula">Data da Matrícula:</label>
+            <label for="dataMatricula">Data da Matrícula:</label>
             <input type="text" id="dataMatricula" th:field="*{dataMatricula}" placeholder="DD/MM/AAAA" required />
         </div>
         <br>
@@ -61,7 +62,7 @@
     </form>
 
     <br>
-    <a th:href="@{/matriculas/listarMatriculas}">Voltar para a Listagem</a>
+    <a th:href="@{/matricula/listarMatricula}">Voltar para a Listagem</a>
 
 </body>
 </html>

@@ -20,12 +20,12 @@ public class Matricula {
     
     @ManyToOne
     @JoinColumn(name = "idaluno", nullable = false)
-    private Aluno aluno;
+    private Aluno idaluno;
 
 
     @ManyToOne
     @JoinColumn(name = "idcurso", nullable = false)
-    private Curso curso;
+    private Curso idcurso;
 
 
     @Column(name = "dataMatricula", nullable = false)
