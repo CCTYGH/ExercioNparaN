@@ -9,6 +9,8 @@
     <h2>Registrar Nova Matrícula</h2>
 
     <form th:action="@{/matricula/salvarMatricula}" th:object="${matriculaDto}" method="POST">
+
+        <input type="hidden" th:field="*{idMatricula}" />
         
         <div>
             <label for="idaluno">Selecione o Aluno:</label>
@@ -22,12 +24,11 @@
             </select>
         </div>
         <br>
-        
+
         <div>
             <label for="idcurso">Selecione o Curso:</label>
             <select id="idcurso" th:field="*{idcurso}" required>
-                <option value=""> Escolha um Curso </option>
-                
+                <option value="1"> Escolha um curso</option>
                 <option th:each="curso : ${listCurso}"
                         th:value="${curso.idcurso}"
                         th:text="${curso.nomeCurso}">

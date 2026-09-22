@@ -9,6 +9,9 @@ import com.projetoN.exercicioM.Service.AlunoService;
 import com.projetoN.exercicioM.Service.CursoService;
 import com.projetoN.exercicioM.Service.MatriculaService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -47,6 +50,23 @@ public String formMatricula(Model model) { /* Essas listas servem para fazer a t
     model.addAttribute("listCurso", cursoService.listarCurso());
     return "matricula/cadastrarMatricula";
 }
+
+
+@PostMapping("/salvarMatricula")
+public String salvarMatricula(MatriculaDto matriculaDto) {
+
+if(matriculaDto.getIdMatricula() == null) {
+    matriculaService.salvarMatricula(matriculaDto);
+}else{
+        matriculaService.editar(matriculaDto.getIdMatricula(), matriculaDto); 
+}
+
+
+
+    return "redirect:/matricula/listarMatricula";
+}
+
+
 
 
 
